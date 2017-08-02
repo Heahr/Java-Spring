@@ -2,7 +2,7 @@
 
  이번에는 DB에 저장된 데이터를 가져와 페이지로 보여주는 작업을 수행할겁니다.
  
- #맵퍼 메소드 추가
+ # 맵퍼 메소드 추가
  BOOKS 테이블로부터 Book의 리스트를 만들기 위해 getList() 메소드를 맵퍼에 추가해줍니다.
  
  BookMapper.java
@@ -20,7 +20,7 @@ public interface BookMapper {
 }
 ```
 
-#데이터를 뷰 페이지로 전달
+# 데이터를 뷰 페이지로 전달
 맵퍼를 사용하여 데이터를 컨트롤러로 가져옵니다.
 
 BooksController.java
@@ -46,9 +46,9 @@ BooksController.java
     }
 ```
 
-#현재까지의 작업 흐름을 정리하면 DB->Mapper->controller->model->view 순서로 보여지게 됩니다.
+# 현재까지의 작업 흐름을 정리하면 DB->Mapper->controller->model->view 순서로 보여지게 됩니다.
 
-#뷰 페이지: foreach를 사용한 데이터 렌더링
+# 뷰 페이지: foreach를 사용한 데이터 렌더링
 DB 데이터를 뷰페이지 까지 가져오게 되었습니다. foreach 태그를 사용하여 가져온 데이터를 화면으로 출력해봅시다.
 
 views/books/index.jsp
@@ -77,12 +77,12 @@ views/books/index.jsp
 
 여기까지 하여 DB 데이터를 페이지로 보여주는 작업을 완료하였습니다. 
 
-#데이터 수정하기
+# 데이터 수정하기
 
 저장된 데이터를 수정하여, 다시 DB에 저장해보도록 하겠습니다. 
-#수정하기(page)->Router->Controller->Mapper->DB 순서입니다.
+# 수정하기(page)->Router->Controller->Mapper->DB 순서입니다.
 
-#URL 만들기
+# URL 만들기
 
 데이터 수정페이지로 이동할 수 있도록 URL을 만들어 줍니다.
 1. 수정페이지 URL : /books/edit/{id}
@@ -105,7 +105,7 @@ views/books/index.jsp
 </div>
 ```
 
-#수정페이지 만들기
+# 수정페이지 만들기
 
 수정하기위핸 페이지인 edit.jsp 파일을 만들어 줍니다.
 
@@ -132,7 +132,7 @@ views/books/edit.jsp
 </html>
 ```
 
-#수정페이지와 URL 연결시키기
+# 수정페이지와 URL 연결시키기
 
 BooksController의 edit() 메소드를 만들고 URL을 부여 한 뒤, edit.jsp 페이지를 연결시켜줍니다.
 
@@ -144,11 +144,11 @@ public String edit(@PathVariable int id) {
 }
 ```
 
-#@PathVariable 어노테이션은 URL로부터 변수 값을 받아올 수 있게 합니다.
+# @PathVariable 어노테이션은 URL로부터 변수 값을 받아올 수 있게 합니다.
 
 -->> 연결을 주기적으로 확인해줘야 합니다.(나중에 어디서 에러났는지 모름)
 
-#수정페이지 폼 추가하기
+# 수정페이지 폼 추가하기
 
 수정페이지(edit.jsp)에 폼 태그를 추가해줍니다. 수정페이지는 생성페이지(new.jsp)와 거의 흡사합니다. 따라서 생성페이지에서 폼태그를 복사해서 붙여넣어 준 뒤, 폼 태그 action 속성의 값을 바꾸어 줍니다.
 
@@ -188,7 +188,7 @@ views/books/edit.jsp
 <button type="submit" class="btn btn-lg btn-primary">전송</button>
 ```
 
-#수정 페이지 값 불러오기
+# 수정 페이지 값 불러오기
 
 수정페이지에서 이전 데이터를 출력하게 해줍시다. 컨트롤러에서 맵퍼를 사용해 데이터를 가져오게 합니다.
 
@@ -258,7 +258,7 @@ views/books/edit.jsp
 
 # -->> 잘 수행되는지 확인해 봅시다. (꼭)
 
-#폼데이터 받아오기
+# 폼데이터 받아오기
 
 수정을 위한 폼 태그는 action의 값에 적혀있는 URL로 데이터를 전송합니다. BooksController에 update() 메소드를 추가하여 데이터를 받아봅시다.
 
@@ -273,7 +273,7 @@ public String update(@ModelAttribute Book book) {
 
 # -->> edit 페이지에서 잘 전달되는지 확인해 봅시다. (아래 상태창에 확인이 됩니다!)
 
-#DB 수정하기
+# DB 수정하기
 
 수정할 데이터도 다 받아왔으니, 맵퍼를 사용해 DB를 수정해줍시다.
 
